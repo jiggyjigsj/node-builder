@@ -1,0 +1,17 @@
+---
+directories:
+  - /opt/appdata
+  - /opt/transcodes
+  - /opt/pgvault
+  - /opt/freenas
+  - /mnt/backup
+  - /mnt/downloads
+  - /mnt/gcrypt
+  - /mnt/gdrive
+  - /mnt/hbackup
+  - /mnt/incomplete
+  - /mnt/move
+  - /mnt/nzb
+  - /mnt/tcrypt
+  - /mnt/tdrive
+  - /mnt/unionfs

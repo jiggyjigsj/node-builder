@@ -1,0 +1,30 @@
+#!/bin/bash
+[Unit]
+Description=gcrypt Daemon
+After=multi-user.target
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/rclone mount gcrypt: /mnt/gcrypt \
+--config=/opt/appdata/rclone/rclone.conf \
+--log-file=/var/log/rclone/rclone-gcrypt.log \
+--log-level="${vfs_ll}" \
+--uid=1000 --gid=1000 --umask=002 \
+--allow-other \
+--timeout=1h \
+--tpslimit=10 \
+--user-agent="${uagent}" \
+--dir-cache-time="${vfs_dct}" \
+--vfs-cache-mode="${vfs_cm}" \
+--vfs-cache-max-age="${vfs_cma}" \
+--vfs-cache-max-size="${vfs_cms}" \
+--vfs-read-chunk-size-limit="${vfs_rcsl}" \
+--vfs-read-chunk-size="${vfs_rcs}" \
+--buffer-size="${vfs_bs}"
+ExecStop=/bin/fusermount -uz /mnt/gcrypt > /dev/null
+TimeoutSec=60
+User=0
+Group=0
+
+[Install]
+WantedBy=multi-user.target
